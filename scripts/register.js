@@ -30,10 +30,8 @@ let pet3 = {
 pets.push(pet1, pet2, pet3);
 
 function displayNames() {
-    // Limpiar el contenido anterior en "result"
     document.getElementById("result").innerHTML = '';
     
-    // Crear una cadena para los elementos de las mascotas
     let petHTML = '';
     for (let i = 0; i < pets.length; i++) {
         petHTML += `
@@ -47,7 +45,6 @@ function displayNames() {
         </div>`;
     }
 
-    // Insertar la cadena de HTML en el contenedor "result"
     document.getElementById("result").innerHTML = `<div class="display-container">${petHTML}</div>`;
 }
 
