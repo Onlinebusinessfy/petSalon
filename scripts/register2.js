@@ -1,13 +1,14 @@
 let pets=[]; //empty array
 
 
-function Pet(name,age,gender,breed,service){
+function Pet(name,age,gender,breed,service,type){
     //properties=parameter(value)
     this.name=name;
     this.age=age;
     this.gender=gender;
     this.breed=breed;
     this.service=service;
+    this.type=type;
 }
 
 function register(){
@@ -25,16 +26,20 @@ function register(){
     console.log(newPet)
     //add to array
     pets.push(newPet);
+    displayTotals();
+    displayRow() //displayTable()
 }
 
 function init(){
     console.log("init");
-    let pet1=new Pet("Cheems", 15,"Male", "Shiba-in", "Grooming", "Dog");
-    let pet2=new Pet("Doge", 12,"Male", "Shiba-in", "Vaccination", "Dog");
-    let pet3=new Pet("Firulais", 8, "Male", "Puggle", "Nails","Dog")
+    let pet1=new Pet("Cheems", 15,"Male", "Shiba-in", "grooming", "Dog");
+    let pet2=new Pet("Doge", 12,"Male", "Shiba-in", "vaccines", "Dog");
+    let pet3=new Pet("Firulais", 8, "Male", "Puggle", "nails","Dog")
 
     pets.push(pet1,pet2,pet3)
     console.log(pets)
+    displayTotals();
+    displayRow() //displayTable()
 }
 
 window.onload=init;//wait to render the HTML

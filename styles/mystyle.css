@@ -69,6 +69,33 @@ img{
     font-weight: 800;
     font-style: oblique;
 }
+
+.pet{
+    border:1px solid black;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.grooming{
+    background-color: rgb(114, 114, 207);
+}
+
+.vaccines{
+    background-color: rgb(87, 201, 87);
+}
+
+.nails{
+    background-color: rgb(194, 68, 194);
+} 
+
+#pets{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    column-gap: 10px;
+    row-gap: 10px;
+    margin-bottom: 10px;
+}
+
 #average{
     font-size: 20px;
     font-weight: bold;
