@@ -22,7 +22,7 @@ function displayTotals(){
     document.getElementById("total").innerHTML=pets.length;
 }
 
-function displayRow(){
+function displayTable(){
     let row = `
     <table class="table table-striped table-dark">
         <thead>
@@ -33,6 +33,7 @@ function displayRow(){
                 <th>Breed</th>
                 <th>Service</th>
                 <th>Type</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -40,17 +41,18 @@ function displayRow(){
     for(let i=0;i<pets.length;i++){
         let pet=pets[i];
         row+=`
-        <tr>
+        <tr id="${i}">
             <td>${pet.name}</td>
             <td>${pet.age}</td>
             <td>${pet.gender}</td>
             <td>${pet.breed}</td>
             <td>${pet.service}</td>
             <td>${pet.type}</td>
+            <td><button onclick="deletePet(${i})" class="btn btn-danger">Delete</button></td>
         </tr>`;
     }
     row += `</tbody></table>`;
-    document.getElementById("petsRow").innerHTML = row;
+    document.getElementById("petTable").innerHTML = row;
     //instead of card use row
     //row +=`<tr><tr>`
     //read about HTML tables

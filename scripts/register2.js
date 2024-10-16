@@ -1,5 +1,11 @@
 let pets=[]; //empty array
 
+let inputName=document.getElementById("txtName");
+let inputAge=document.getElementById("txtAge");
+let inputGender=document.querySelector('input[name="gender"]:checked');
+let inputBreed=document.getElementById("txtBreed");
+let inputService=document.getElementById("txtService");
+let inputType=document.getElementById("txtType");
 
 function Pet(name,age,gender,breed,service,type){
     //properties=parameter(value)
@@ -11,23 +17,62 @@ function Pet(name,age,gender,breed,service,type){
     this.type=type;
 }
 
-function register(){
-    let inputName=document.getElementById("txtName").value;
-    let inputAge=document.getElementById("txtAge").value;
-    let inputGender=document.querySelector('input[name="gender"]:checked').value;
-    let inputBreed=document.getElementById("txtBreed").value;
-    let inputService=document.getElementById("txtService").value;
-    let inputType=document.getElementById("txtType").value;
+function register() {
+    // Access the values inside the function
+    let inputGender = document.querySelector('input[name="gender"]:checked');
+    let newPet = new Pet(
+        inputName.value,
+        inputAge.value,
+        inputGender ? inputGender.value : '',
+        inputBreed.value,
+        inputService.value,
+        inputType.value
+    );
 
-    console.log(inputName,inputAge, inputGender, inputBreed, inputService, inputType)
+    if (isValid(newPet)) {
+        pets.push(newPet);
+        displayTotals();
+        displayTable();
+    }
+}
 
-    //create the obj
-    let newPet=new Pet(inputName,inputAge,inputGender,inputBreed,inputService,inputType);
-    console.log(newPet)
-    //add to array
-    pets.push(newPet);
+function isValid(){
+    let validation=true;
+
+    if(pets.name==""){
+        validation=false;
+        inputName.classList.add("error");
+    }
+    if(pets.age==""){
+        validation=false;
+        inputAge.classList.add("error");
+    }
+    if(pets.gender==""){
+        validation=false;
+        inputGender.classList.add("error");
+    }
+    if(pets.breed==""){
+        validation=false;
+        inputBreed.classList.add("error");
+    }
+    if(pets.service==""){
+        validation=false;
+        inputService.classList.add("error");
+    }
+    if(pets.type==""){
+        validation=false;
+        inputType.classList.add("error");
+    }
+
+    return validation;
+}
+
+function deletePet(petId){
+    console.log("Deleting pet..." + petId);
+    document.getElementById(petId).remove();
+    pets.splice(petId,1);
+    displayTable();
     displayTotals();
-    displayRow() //displayTable()
 }
 
 function init(){
@@ -39,7 +84,7 @@ function init(){
     pets.push(pet1,pet2,pet3)
     console.log(pets)
     displayTotals();
-    displayRow() //displayTable()
+    displayTable() //displayTable()
 }
 
 window.onload=init;//wait to render the HTML

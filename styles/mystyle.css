@@ -183,3 +183,7 @@ footer nav ul li a {
 footer nav ul li a:hover {
     color: #ffcc00;
 }
+
+.error{
+    background-color: red;
+}
