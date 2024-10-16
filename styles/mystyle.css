@@ -187,3 +187,13 @@ footer nav ul li a:hover {
 .error{
     background-color: red;
 }
+
+.form-floating label{
+    margin-top: -15px;
+}
+
+.form-check-radio{
+    transform: scale(1.5);
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
