@@ -1,67 +1,73 @@
-function Service(title,price){
-    this.title=title;
-    this.price=price;
+function Service(title, price) {
+    this.title = title;
+    this.price = price;
 }
 
-function isValid(service){
-    let isValidTitle=true;
-    let isValidPrice=true;
+function isValid(service) {
+    let isValidTitle = true;
+    let isValidPrice = true;
 
-    if(service.title==""){
-        isValidTitle=false;
+    if (service.title === "") {
+        isValidTitle = false;
         $("#txtTitle").addClass("error");
-        $(".titleValidationMsg").css("color","red").show();
-    }else{
+        $(".titleValidationMsg").css("color", "red").show();
+    } else {
         $("#txtTitle").removeClass("error");
         $(".titleValidationMsg").hide();
-        isValidTitle=true;
     }
-    if(service.price==""){
-        isValidPrice=false;
+
+    if (service.price === "") {
+        isValidPrice = false;
         $("#txtPrice").addClass("error");
-        $(".priceValidationMsg").css("color","red").show();
-    }else{
+        $(".priceValidationMsg").css("color", "red").show();
+    } else {
         $("#txtPrice").removeClass("error");
         $(".priceValidationMsg").hide();
-        isValidPrice=true;
     }
 
-    return isValidTitle&&isValidPrice;
+    return isValidTitle && isValidPrice;
 }
 
-function clearInputs(){
+function clearInputs() {
     $("#txtTitle").val("");
     $("#txtPrice").val("");
 }
 
-function register(){
-    // getting title and price from inputs
-    let inputTitle=$("#txtTitle").val();
-    let inputPrice=$("#txtPrice").val();
+function register(event) {
+    event.preventDefault();
 
-    // console.log("title:"+inputTitle);
-    // console.log("price:"+inputPrice);
-    let newService=new Service(inputTitle,inputPrice);
-    console.log("Is valid?", isValid(newService));
-    
-    if(isValid(newService)){
+    $(".titleValidationMsg").hide();
+    $(".priceValidationMsg").hide();
+    $("#txtTitle").removeClass("error");
+    $("#txtPrice").removeClass("error");
+
+    let inputTitle = $("#txtTitle").val().trim();
+    let inputPrice = $("#txtPrice").val().trim();
+
+    let newService = new Service(inputTitle, inputPrice);
+
+    if (isValid(newService)) {
         console.log(newService);
         alert("The registration was successful");
-        //save(service)
         clearInputs();
+        save(newService);
+        displayTable2();
     }
 }
 
-function init(){
+function init() {
     $(".titleValidationMsg").hide();
     $(".priceValidationMsg").hide();
-    //hook events
+
     $("#btnRegister").click(register);
-    $("#txtPrice").on("keypress", function(event){
-        if(event.which == 13) {
-            register();
+    $("#txtPrice").on("keypress", function (event) {
+        if (event.which === 13) {
+            register(event);
         }
     });
 }
 
-window.onload=init;
+window.onload = function () {
+    console.log("Table loaded");
+    displayTable2();
+};

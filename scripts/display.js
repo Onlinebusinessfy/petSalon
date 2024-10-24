@@ -48,7 +48,7 @@ function displayTable(){
             <td>${pet.breed}</td>
             <td>${pet.service}</td>
             <td>${pet.type}</td>
-            <td><button onclick="deletePet(${i})" class="btn btn-danger">Delete</button></td>
+            <td><button onclick="deletePet(${i})" class="btn btn-danger custom-btn">Delete</button></td>
         </tr>`;
     }
     row += `</tbody></table>`;
