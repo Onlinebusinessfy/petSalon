@@ -28,6 +28,7 @@
                 <img style= "border-radius: 20px; max-width:40%;" src="./Cheems.jpg" alt="puppy">
             </div>
         </div>
+        <button id="mode">Dark Mode</button>
     </header>
     <main class="container container-sm">
         <div>
@@ -65,9 +66,6 @@
                 <label>Service: </label>
                 <select class="form-select" aria-label="Default select example" id="txtService">
                     <option value="" disabled selected>-- Select an option --</option>
-                    <option value="grooming">Grooming</option>
-                    <option value="nails">Nails</option>
-                    <option value="vaccines">Vaccines</option>
                 </select>
             </div>
             <div>
@@ -78,9 +76,9 @@
         <div id="average"></div>
 
         <div class="container-sm">
-            <h2>Registered Pets</h2>
+            <h2 id="register-text">Registered Pets</h2>
             <div>
-                <p>Total=<span id="total">100</span></p>
+                <p id="total-text">Total=<span id="total">100</span></p>
             </div>
             <div id="petTable">
                 <!-- All the pets are going to be displayed here -->
@@ -107,6 +105,8 @@
         </nav>
     </footer>        
     <script src="./scripts/register2.js"></script>
+    <script src="./scripts/storeManager.js"></script>
     <script src="./scripts/display.js"></script>
+    <script src="./plugins/jQuery3.7.1.js"></script>
 </body>
 </html>
